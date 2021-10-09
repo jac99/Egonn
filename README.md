@@ -48,10 +48,10 @@ export PYTHONPATH=$PYTHONPATH:/home/.../Egonn
 **EgoNN** is trained and evaluated using the following datasets:
 * MulRan dataset: Sejong traversal is used. The traversal is split into training and evaluation part [link](https://sites.google.com/view/mulran-pr)
 * Apollo-SouthBay dataset: SunnyvaleBigLoop trajectory is used for evaluation, other 5 trajectories (BaylandsToSeafood, 
-* ColumbiaPark, Highway237, MathildaAVE, SanJoseDowntown) are used for training [link](https://apollo.auto/southbay.html)
+ColumbiaPark, Highway237, MathildaAVE, SanJoseDowntown) are used for training [link](https://apollo.auto/southbay.html)
 * Kitti dataset: Sequence 00 is used for evaluation [link](http://www.cvlibs.net/datasets/kitti/)
 
-First, you need to download datasets using the links provided above.
+First, you need to download datasets using:
 
 * For MulRan dataset you need to download ground truth data (*.csv) and LiDAR point clouds (Ouster.zip) for traversals: 
 * Sejong01 and Sejong02. 
