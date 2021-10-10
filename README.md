@@ -8,8 +8,8 @@ submitted to IEEE Robotics and Automation Letters (RA-L)
 Warsaw University of Technology
 
 ### Introduction
-The paper presents a deep neural network-based method for global and local descriptors extraction from a point
-cloud acquired by a rotating 3D LiDAR sensor. The descriptors can be used for two-stage 6DoF relocalization. First, a course
+The paper presents a **deep neural network-based method for global and local descriptors extraction from a point
+cloud acquired by a rotating 3D LiDAR sensor**. The descriptors can be used for two-stage 6DoF relocalization. First, a course
 position is retrieved by finding candidates with the closest global descriptor in the database of geo-tagged point clouds. Then,
 6DoF pose between a query point cloud and a database point cloud is estimated by matching local descriptors and using a
 robust estimator such as RANSAC. Our method has a simple, fully convolutional architecture and uses a sparse voxelized
