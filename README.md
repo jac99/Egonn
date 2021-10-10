@@ -75,14 +75,12 @@ To train the network, run:
 ```
 cd training
 
-# Train radar-based RadarLoc model
 python train.py --config ../config/config_egonn.txt --model_config ../models/egonn.txt 
 ```
 
 ### Pre-trained Model
 
-Pretrained model is available in `weights` directory
-- `egonn.pth` radar-based RadarLoc model 
+EgoNN model trained (on training splits of MulRan and Apollo-SouthBay datasets) is available in `weights/egonn.pth`.
 
 ### Evaluation
 
