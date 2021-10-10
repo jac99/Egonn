@@ -13,8 +13,8 @@ cloud acquired by a rotating 3D LiDAR sensor**. The descriptors can be used for 
 position is retrieved by finding candidates with the closest global descriptor in the database of geo-tagged point clouds. Then,
 6DoF pose between a query point cloud and a database point cloud is estimated by matching local descriptors and using a
 robust estimator such as RANSAC. Our method has a simple, fully convolutional architecture and uses a sparse voxelized
-representation of the input point cloud. It can efficiently extract a global descriptor and a set of keypoints with 
-their local descriptors from large point clouds with tens of thousand points.
+representation of the input point cloud. It can **efficiently extract a global descriptor and a set of keypoints with 
+their local descriptors from large point clouds with tens of thousand points**.
 
 ### Our other projects ###
 * MinkLoc3D: Point Cloud Based Large-Scale Place Recognition (WACV 2021): [MinkLoc3D](https://github.com/jac99/MinkLoc3D) 
