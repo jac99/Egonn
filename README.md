@@ -21,7 +21,7 @@ their local descriptors from large point clouds with tens of thousand points.
 * MinkLoc++: Lidar and Monocular Image Fusion for Place Recognition (IJCNN 2021): [MinkLoc++](https://github.com/jac99/MinkLocMultimodal)
 * Large-Scale Topological Radar Localization Using Learned Descriptors (ICONIP 2021): [RadarLoc](https://github.com/jac99/RadarLoc)
 
-## Training/evaluation code and pre-trained models will be released after the paper acceptance.
+## Site is under construction. Training/evaluation code and pre-trained models will be released after the paper acceptance.
 
 
 ### Citation
