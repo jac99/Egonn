@@ -97,6 +97,11 @@ python evaluate.py --dataset_root <dataset_root_path> --dataset <mulran|robotcar
 
 **EgoNN** performance...
 
+## Visualizations
+Below you can find visualizations of our keypoint detector results. On the left we show 128 keypoints with the highest saliency uncertainty, whereas on the right 128 with the lowest.
+
+![](images/keypoints_vis.png)
+
 
 ### License
 Our code is released under the MIT License (see LICENSE file for details).
