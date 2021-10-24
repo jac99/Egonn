@@ -27,9 +27,6 @@ their local descriptors from large point clouds with tens of thousand points**.
 ![](images/key1_.png)
 ![](images/pair2.png)
 
-## Site is under construction. Training/evaluation code and pre-trained models will be released after the paper acceptance.
-
-
 ### Citation
 If you find this work useful, please consider citing:
 
@@ -69,7 +66,7 @@ After loading datasets you need to:
 1. **Generate training pickles** needed for the network training. 
 2. **Generate evaluation pickles** for model evaluation. 
 
-### Training
+### Training (traiing code will be released after the paper acceptance)
 First, download datasets and generate training and evaluation pickles as described above.
 Edit the configuration file (`config_egonn.txt`). 
 Set `dataset_folder` parameter to point to the dataset root folder.
