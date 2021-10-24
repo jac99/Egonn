@@ -61,7 +61,7 @@ Sejong01 and Sejong02 ([link](https://sites.google.com/view/mulran-pr/download))
 * Download Apollo-SouthBay dataset using the download link on the dataset website ([link](https://apollo.auto/southbay.html)).
 * Download Kitti odometry dataset (calibration files, ground truth poses, Velodyne laser data) ([link](http://www.cvlibs.net/datasets/kitti/eval_odometry.php)).
 
-After loading datasets you need to  **training pickles** for the network training and **evaluation pickles** for model 
+After loading datasets you need to generate **training pickles** for the network training and **evaluation pickles** for model 
 evaluation.
 
 ##### Training pickles generation
@@ -93,12 +93,12 @@ python generate_evaluation_sets.py --dataset_root <kitti_dataset_root_path>
 ### Training (training code will be released after the paper acceptance)
 
 First, download datasets and generate training and evaluation pickles as described above.
-Edit the configuration file *config_egonn.txt`*. 
+Edit the configuration file *config_egonn.txt*. 
 Set *dataset_folder* parameter to point to the dataset root folder.
 Modify *batch_size_limit* and *secondary_batch_size_limit* parameters depending on available GPU memory. 
 Default limits requires at least 11GB of GPU RAM.
 
-To train the network, run:
+To train the EgoNN model, run:
 
 ```
 cd training
@@ -108,7 +108,8 @@ python train.py --config ../config/config_egonn.txt --model_config ../models/ego
 
 ### Pre-trained Model
 
-EgoNN model trained (on training splits of MulRan and Apollo-SouthBay datasets) is available in `weights/egonn.pth`.
+EgoNN model trained (on training splits of MulRan and Apollo-SouthBay datasets) is available in 
+*weights/model_egonn_20210916_1104.pth*.
 
 ### Evaluation
 
@@ -117,7 +118,7 @@ To evaluate a pretrained model run the following command:
 ```
 cd eval
 
-python evaluate.py --dataset_root <dataset_root_path> --dataset <mulran|robotcar> --eval_set <evaluation_set_filename> --model_config ../config/egonn.txt --weights ../weights/egonn.pth
+python evaluate.py --dataset_root <dataset_root_path> --dataset <mulran|southbay|kitti> --eval_set <evaluation_set_filename> --model_config ../config/egonn.txt --weights ../weights/model_egonn_20210916_1104.pth
 
 ```
 
