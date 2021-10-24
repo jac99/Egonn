@@ -50,7 +50,6 @@ class KittiSequence(Dataset):
 
         self.rel_lidar_timestamps, self.lidar_poses, filenames = self._read_lidar_poses()
         self.rel_scan_filepath = [os.path.join(self.rel_lidar_path, '%06d%s' % (e, '.bin')) for e in filenames]
-        print(self.rel_scan_filepath)
 
     def __len__(self):
         return len(self.rel_lidar_timestamps)
