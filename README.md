@@ -136,14 +136,17 @@ python evaluate.py --dataset_root <dataset_root_path> --dataset_type kitti --eva
 
 ## Visualizations
 
-Below images show visualizations of our keypoint detector results. 
+Visualizations of our keypoint detector results. 
 On the left we show 128 keypoints with the lowest saliency uncertainty (red dots), 
 whereas on the right 128 with the highest (yellow dots).
 
 ![](images/keypoints_vis.png)
 
+Successful registration of point cloud pairs from KITTI dataset gathered during revisiting the same place from different directions.
+On the left we show keypoint correspondences (RANSAC inliers) found during 6DoF pose estimation with RANSAC.
+On the right we show point clouds aligned using estimated poses.
 
-
+![](images/registered_pairs.png)
 
 ### License
 Our code is released under the MIT License (see LICENSE file for details).
