@@ -62,15 +62,15 @@ Sejong01 and Sejong02 ([link](https://sites.google.com/view/mulran-pr/download))
 * Download Kitti odometry dataset (calibration files, ground truth poses, Velodyne laser data) ([link](http://www.cvlibs.net/datasets/kitti/eval_odometry.php)).
 
 After loading datasets you need to:
-1. **Generate training pickles** needed for the network training. 
+1. **Generate training pickles** for the network training. 
 2. **Generate evaluation pickles** for model evaluation. 
 
-### Training (traiing code will be released after the paper acceptance)
+### Training (training code will be released after the paper acceptance)
 First, download datasets and generate training and evaluation pickles as described above.
-Edit the configuration file (`config_egonn.txt`). 
-Set `dataset_folder` parameter to point to the dataset root folder.
-Modify `batch_size_limit` parameter depending on available GPU memory. 
-Default limit (=64) in `config_egonn.txt` for LiDAR-based model requires at least 11GB of GPU RAM.
+Edit the configuration file *config_egonn.txt`*. 
+Set *dataset_folder* parameter to point to the dataset root folder.
+Modify *batch_size_limit* and *secondary_batch_size_limit* parameters depending on available GPU memory. 
+Default limits requires at least 11GB of GPU RAM.
 
 To train the network, run:
 
