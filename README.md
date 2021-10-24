@@ -25,6 +25,7 @@ representation of the input point cloud. It can **efficiently extract a global d
 their local descriptors from large point clouds with tens of thousand points**.
 
 ![](images/key1_.png)
+![](images/pair2.png)
 
 ## Site is under construction. Training/evaluation code and pre-trained models will be released after the paper acceptance.
 
