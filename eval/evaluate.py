@@ -155,11 +155,11 @@ class MinkLocGLEvaluator(Evaluator):
         if self.only_global:
             metrics = {}
         else:
-            metrics = {n_kpts: {'rre': [], 'rte': [], 'yaw_err': [], 'rte_xy': [], 'repeatability': [],
-                                'success': [], 'yaw_success': [], 'success_inliers': [], 'failure_inliers': [],
-                                'rre_refined': [], 'rte_refined': [], 'yaw_err_refined': [], 'rte_xy_refined': [],
-                                'success_refined': [], 'success_inliers_refined': [], 'repeatability_refined': [],
-                                'failure_inliers_refined': [], 'yaw_success_refined': [], 't_ransac': []}
+            metrics = {n_kpts: {'rre': [], 'rte': [], 'repeatability': [],
+                                'success': [], 'success_inliers': [], 'failure_inliers': [],
+                                'rre_refined': [], 'rte_refined': [], 'success_refined': [],
+                                'success_inliers_refined': [], 'repeatability_refined': [],
+                                'failure_inliers_refined': [], 't_ransac': []}
                        for n_kpts in self.n_k}
 
         # Dictionary to store the number of true positives (for global desc. metrics) for different radius and NN number
@@ -243,21 +243,10 @@ class MinkLocGLEvaluator(Evaluator):
 
                 # calc errors
                 rte = np.linalg.norm(T_estimated[:3, 3] - T_gt[:3, 3])
-                rte_xy = np.linalg.norm(T_estimated[:2, 3] - T_gt[:2, 3])
                 cos_rre = (np.trace(T_estimated[:3, :3].transpose(1, 0) @ T_gt[:3, :3]) - 1.) / 2.
                 rre = np.arccos(np.clip(cos_rre, a_min=-1., a_max=1.)) * 180. / np.pi
-                yaw_gt, _, _ = m2ypr(T_gt)
-                yaw_est, _, _ = m2ypr(T_estimated)
-                yaw_error = np.abs(yaw_gt - yaw_est) * 180. / np.pi
 
                 metrics[n_kpts]['t_ransac'].append(t_ransac)    # RANSAC time
-
-                # 5 degrees threshold for yaw estimation
-                if yaw_error > 5.:
-                    metrics[n_kpts]['yaw_success'].append(0.)
-                else:
-                    metrics[n_kpts]['yaw_success'].append(1.)
-                    metrics[n_kpts]['yaw_err'].append(yaw_error)
 
                 # 2 meters and 5 degrees threshold for successful registration
                 if rte > 2.0 or rre > 5.:
@@ -266,26 +255,14 @@ class MinkLocGLEvaluator(Evaluator):
                 else:
                     metrics[n_kpts]['success'].append(1.)
                     metrics[n_kpts]['rte'].append(rte)
-                    metrics[n_kpts]['rte_xy'].append(rte_xy)
                     metrics[n_kpts]['rre'].append(rre)
                     metrics[n_kpts]['success_inliers'].append(inliers)
 
                 if self.icp_refine:
                     # calc errors using refined pose
                     rte_refined = np.linalg.norm(T_estimated[:3, 3] - T_refined[:3, 3])
-                    rte_xy_refined = np.linalg.norm(T_estimated[:2, 3] - T_refined[:2, 3])
                     cos_rre_refined = (np.trace(T_estimated[:3, :3].transpose(1, 0) @ T_refined[:3, :3]) - 1.) / 2.
                     rre_refined = np.arccos(np.clip(cos_rre_refined, a_min=-1., a_max=1.)) * 180. / np.pi
-                    yaw_gt_refined, _, _ = m2ypr(T_refined)
-                    yaw_est_refined, _, _ = m2ypr(T_estimated)
-                    yaw_error_refined = np.abs(yaw_gt_refined - yaw_est_refined) * 180. / np.pi
-
-                    # 5 degrees threshold for yaw estimation
-                    if yaw_error_refined > 5.:
-                        metrics[n_kpts]['yaw_success_refined'].append(0.)
-                    else:
-                        metrics[n_kpts]['yaw_success_refined'].append(1.)
-                        metrics[n_kpts]['yaw_err_refined'].append(yaw_error_refined)
 
                     # 2 meters and 5 degrees threshold for successful registration
                     if rte_refined > 2.0 or rre_refined > 5.:
@@ -293,9 +270,7 @@ class MinkLocGLEvaluator(Evaluator):
                         metrics[n_kpts]['failure_inliers_refined'].append(inliers)
                     else:
                         metrics[n_kpts]['rte_refined'].append(rte_refined)
-                        metrics[n_kpts]['rte_xy_refined'].append(rte_xy_refined)
                         metrics[n_kpts]['rre_refined'].append(rre_refined)
-                        metrics[n_kpts]['yaw_err_refined'].append(yaw_error_refined)
                         metrics[n_kpts]['success_refined'].append(1.)
                         metrics[n_kpts]['success_inliers_refined'].append(inliers)
 
@@ -442,7 +417,7 @@ if __name__ == "__main__":
     parser.add_argument('--dataset_type', type=str, required=True, choices=['mulran', 'southbay', 'kitti'])
     parser.add_argument('--eval_set', type=str, required=True, help='File name of the evaluation pickle (must be located in dataset_root')
     parser.add_argument('--radius', type=float, nargs='+', default=[5, 20], help='True Positive thresholds in meters')
-    parser.add_argument('--n_k', type=int, nargs='+', default=[128, 256], help='Number of keypoints to calculate repeatability')
+    parser.add_argument('--n_k', type=int, nargs='+', default=[128], help='Number of keypoints to calculate repeatability')
     parser.add_argument('--n_samples', type=int, default=None, help='Number of elements sampled from the query sequence')
     parser.add_argument('--model_config', type=str, required=True, help='Path to the global model configuration file')
     parser.add_argument('--weights', type=str, default=None, help='Trained global model weights')
@@ -454,8 +429,6 @@ if __name__ == "__main__":
     # Ignore keypoint position and assume keypoints are located at the supervoxel centres
     parser.add_argument('--ignore_keypoint_regressor', dest='ignore_keypoint_regressor', action='store_true')
     parser.set_defaults(ignore_keypoint_regressor=False)
-    parser.add_argument('--only_global', dest='only_global', action='store_true')
-    parser.set_defaults(only_global=False)
 
     args = parser.parse_args()
     print(f'Dataset root: {args.dataset_root}')
@@ -473,7 +446,6 @@ if __name__ == "__main__":
     print(f'ICP refine: {args.icp_refine}')
     print(f'Ignore keypoints saliency: {args.ignore_keypoint_saliency}')
     print(f'Ignore keypoints regressor: {args.ignore_keypoint_regressor}')
-    print(f'Evaluate only global descriptor: {args.only_global}')
     print('')
 
     model_params = ModelParams(args.model_config)
@@ -499,5 +471,5 @@ if __name__ == "__main__":
     evaluator = MinkLocGLEvaluator(args.dataset_root, args.dataset_type, args.eval_set, device, radius=args.radius,
                                    n_samples=args.n_samples, n_k=args.n_k, quantizer=model_params.quantizer,
                                    icp_refine=args.icp_refine, ignore_keypoint_saliency=args.ignore_keypoint_saliency)
-    global_metrics, metrics = evaluator.evaluate(model, only_global=args.only_global)
+    global_metrics, metrics = evaluator.evaluate(model)
     evaluator.print_results(global_metrics, metrics)
