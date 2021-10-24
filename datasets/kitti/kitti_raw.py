@@ -65,6 +65,8 @@ class KittiSequence(Dataset):
 
     def _read_lidar_poses(self):
         fnames = os.listdir(os.path.join(self.dataset_root, self.rel_lidar_path))
+        temp = os.path.join(self.dataset_root, self.rel_lidar_path)
+        fnames = [e for e in fnames if os.path.isfile(os.path.join(temp, e))]
         assert len(fnames) > 0, f"Make sure that the path {self.rel_lidar_path}"
         filenames = sorted([int(os.path.split(fname)[-1][:-4]) for fname in fnames])
         with open(self.pose_file, "r") as h:
