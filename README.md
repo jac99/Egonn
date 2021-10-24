@@ -7,6 +7,9 @@ submitted to IEEE Robotics and Automation Letters (RA-L)
 
 Warsaw University of Technology
 
+### What's new ###
+* [2021-10-24] Evaluation code and pretrained models released.
+
 ### Our other projects ###
 * MinkLoc3D: Point Cloud Based Large-Scale Place Recognition (WACV 2021): [MinkLoc3D](https://github.com/jac99/MinkLoc3D) 
 * MinkLoc++: Lidar and Monocular Image Fusion for Place Recognition (IJCNN 2021): [MinkLoc++](https://github.com/jac99/MinkLocMultimodal)
