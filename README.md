@@ -24,6 +24,8 @@ robust estimator such as RANSAC. Our method has a simple, fully convolutional ar
 representation of the input point cloud. It can **efficiently extract a global descriptor and a set of keypoints with 
 their local descriptors from large point clouds with tens of thousand points**.
 
+![](images/key1_.png)
+
 ## Site is under construction. Training/evaluation code and pre-trained models will be released after the paper acceptance.
 
 
