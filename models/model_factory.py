@@ -48,48 +48,6 @@ def create_egonn_model(model_params: ModelParams):
         local_map_channels = 64
         local_descriptor_size = 128
 
-    elif model_name == 'egonn_global':
-        # THIS IS OUR BEST MODEL
-        block = ECABasicBlock
-        planes = [32, 64, 64, 128, 128, 128, 128]
-        layers = [1, 1, 1, 1, 1, 1, 1]
-
-        global_in_levels = [5, 6, 7]
-        global_map_channels = 128
-        global_descriptor_size = 256
-
-        local_in_levels = []
-        local_map_channels = None
-        local_descriptor_size = None
-
-    elif model_name == 'egonn_nofpn1':
-        # Same as egonn but without FPN
-        block = ECABasicBlock
-        planes = [32, 64, 64, 128, 128]
-        layers = [1, 1, 1, 1, 1]
-
-        global_in_levels = [5]
-        global_map_channels = 128
-        global_descriptor_size = 256
-
-        local_in_levels = [3]
-        local_map_channels = 64
-        local_descriptor_size = 128
-
-    elif model_name == 'egonn_nofpn2':
-        # Same as egonn but without FPN (second variant)
-        block = ECABasicBlock
-        planes = [32, 64, 64, 128, 128, 128, 128]
-        layers = [1, 1, 1, 1, 1, 1, 1]
-
-        global_in_levels = [7]
-        global_map_channels = 128
-        global_descriptor_size = 256
-
-        local_in_levels = [4]
-        local_map_channels = 64
-        local_descriptor_size = 128
-
     else:
         raise NotImplementedError(f'Unknown model: {model_name}')
 

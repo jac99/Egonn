@@ -1,5 +1,5 @@
 # Code based on ScanContext implementation: https://github.com/irapkaist/scancontext/blob/master/python/make_sc_example.py
-# Vectorized implementation by Jacek Komorowski
+# Partially vectorized implementation by Jacek Komorowski
 
 import numpy as np
 import numpy_indexed as npi

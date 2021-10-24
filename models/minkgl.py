@@ -1,14 +1,5 @@
-# Unified multi-head global and local model
+# Unified model to generate a global and local descriptors
 # Warsaw University of Technology
-# The model consists of:
-# - the single trunk (bottom-up pass)
-# - 4 heads: local descriptor, local spatial attention, global descriptor, global spatial attention;
-#    attention heads are optional; each head heads it's own 1x1x1 convolution and transposed convolution blocks;
-#    and it's own list of layers from the trunk it takes as an input
-# - 2 saliency regressors (optional): one for global and one for local attention; they must return values
-#   in <0, 1> range for each spatial location
-# - 1 polling block: for global descriptor
-# - 1 linear block (optional): the last block for global descriptors (in DELG paper they used it for whitening)
 
 from typing import Dict, List
 import torch
