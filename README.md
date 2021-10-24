@@ -54,13 +54,12 @@ export PYTHONPATH=$PYTHONPATH:/home/.../Egonn
 ColumbiaPark, Highway237, MathildaAVE, SanJoseDowntown) are used for training [link](https://apollo.auto/southbay.html)
 * Kitti dataset: Sequence 00 is used for evaluation [link](http://www.cvlibs.net/datasets/kitti/)
 
-First, you need to download datasets using:
+First, you need to download datasets:
 
 * For MulRan dataset you need to download ground truth data (*.csv) and LiDAR point clouds (Ouster.zip) for traversals: 
-* Sejong01 and Sejong02. 
-Use this [link](https://sites.google.com/view/mulran-pr/download).
-* Download Apollo-SouthBay dataset using the download link on the dataset website [link](https://apollo.auto/southbay.html)
-* Download Kitti odometry dataset (calibration files, ground truth poses, velodyne laser data) [link](http://www.cvlibs.net/datasets/kitti/eval_odometry.php)
+Sejong01 and Sejong02 ([link](https://sites.google.com/view/mulran-pr/download)).
+* Download Apollo-SouthBay dataset using the download link on the dataset website ([link](https://apollo.auto/southbay.html)).
+* Download Kitti odometry dataset (calibration files, ground truth poses, Velodyne laser data) ([link](http://www.cvlibs.net/datasets/kitti/eval_odometry.php)).
 
 After loading datasets you need to:
 1. **Generate training pickles** needed for the network training. 
