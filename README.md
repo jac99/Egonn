@@ -109,13 +109,13 @@ python train.py --config ../config/config_egonn.txt --model_config ../models/ego
 ### Pre-trained Model
 
 EgoNN model trained (on training splits of MulRan and Apollo-SouthBay datasets) is available in 
-*weights/model_egonn_20210916_1104.pth*.
+*weights/model_egonn_20210916_1104.pth* folder.
 
 ### Evaluation
 
 To evaluate a pretrained model run below commands. 
 Ground truth poses between different traversals in all three datasets are slightly misaligned. 
-To reproduce results from the paper, use option `--icp_refine` to refine ground truth poses using ICP.
+To reproduce results from the paper, use `--icp_refine` option to refine ground truth poses using ICP.
 
 ```
 cd eval
