@@ -80,7 +80,6 @@ class KittiSequence(Dataset):
             temp = [e.strip() for e in pose.split(' ')]
             assert len(temp) == 12, f'Invalid line in global poses file: {temp}'
             # poses in kitti ar ein cam0 reference
-            print(temp)
             poses[ndx] = np.array([[float(temp[0]), float(temp[1]), float(temp[2]), float(temp[3])],
                                    [float(temp[4]), float(temp[5]), float(temp[6]), float(temp[7])],
                                    [float(temp[8]), float(temp[9]), float(temp[10]), float(temp[11])],
