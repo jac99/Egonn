@@ -135,9 +135,14 @@ python evaluate.py --dataset_root <dataset_root_path> --dataset_type kitti --eva
 **EgoNN** performance...
 
 ## Visualizations
-Below you can find visualizations of our keypoint detector results. On the left we show 128 keypoints with the highest saliency uncertainty, whereas on the right 128 with the lowest.
+
+Below images show visualizations of our keypoint detector results. 
+On the left we show 128 keypoints with the lowest saliency uncertainty (red dots), 
+whereas on the right 128 with the highest (yellow dots).
 
 ![](images/keypoints_vis.png)
+
+
 
 
 ### License
