@@ -61,11 +61,37 @@ Sejong01 and Sejong02 ([link](https://sites.google.com/view/mulran-pr/download))
 * Download Apollo-SouthBay dataset using the download link on the dataset website ([link](https://apollo.auto/southbay.html)).
 * Download Kitti odometry dataset (calibration files, ground truth poses, Velodyne laser data) ([link](http://www.cvlibs.net/datasets/kitti/eval_odometry.php)).
 
-After loading datasets you need to:
-1. **Generate training pickles** for the network training. 
-2. **Generate evaluation pickles** for model evaluation. 
+After loading datasets you need to  **training pickles** for the network training and **evaluation pickles** for model 
+evaluation.
+
+##### Training pickles generation
+
+Generating training tuples is very time consuming, as ICP is used to refine the ground truth poses between each pair
+of neighbourhood point clouds.
+
+```
+cd datasets/mulran
+python generate_training_tuples.py --dataset_root <mulran_dataset_root_path>
+
+cd ../southbay
+python generate_training_tuples.py --dataset_root <apollo_southbay_dataset_root_path>
+```
+
+##### Evaluation pickles generation
+
+```
+cd datasets/mulran
+python generate_evaluation_sets.py --dataset_root <mulran_dataset_root_path>
+
+cd ../southbay
+python generate_evaluation_sets.py --dataset_root <apollo_southbay_dataset_root_path>
+
+cd ../kitti
+python generate_evaluation_sets.py --dataset_root <kitti_dataset_root_path>
+```
 
 ### Training (training code will be released after the paper acceptance)
+
 First, download datasets and generate training and evaluation pickles as described above.
 Edit the configuration file *config_egonn.txt`*. 
 Set *dataset_folder* parameter to point to the dataset root folder.
