@@ -121,13 +121,13 @@ To reproduce results from the paper, use option `--icp_refine` to refine ground 
 cd eval
 
 # To evaluate on test split of Mulran dataset
-python evaluate.py --dataset_root <dataset_root_path> --dataset mulran --eval_set test_Sejong01_Sejong02.pickle --model_config ../config/egonn.txt --weights ../weights/model_egonn_20210916_1104.pth --icp_refine
+python evaluate.py --dataset_root <dataset_root_path> --dataset_type mulran --eval_set test_Sejong01_Sejong02.pickle --model_config ../models/egonn.txt --weights ../weights/model_egonn_20210916_1104.pth --icp_refine
 
 # To evaluate on test split of Apollo-SouthBay dataset
-python evaluate.py --dataset_root <dataset_root_path> --dataset southbay --eval_set test_SunnyvaleBigloop_1.0_5.pickle --model_config ../config/egonn.txt --weights ../weights/model_egonn_20210916_1104.pth --icp_refine
+python evaluate.py --dataset_root <dataset_root_path> --dataset_type southbay --eval_set test_SunnyvaleBigloop_1.0_5.pickle --model_config ../models/egonn.txt --weights ../weights/model_egonn_20210916_1104.pth --icp_refine
 
 # To evaluate on test split of KITTI dataset
-python evaluate.py --dataset_root <dataset_root_path> --dataset kitti --eval_set kitti_00_eval.pickle --model_config ../config/egonn.txt --weights ../weights/model_egonn_20210916_1104.pth --icp_refine
+python evaluate.py --dataset_root <dataset_root_path> --dataset_type kitti --eval_set kitti_00_eval.pickle --model_config ../models/egonn.txt --weights ../weights/model_egonn_20210916_1104.pth --icp_refine
 ```
 
 ## Results
