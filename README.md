@@ -7,6 +7,11 @@ submitted to IEEE Robotics and Automation Letters (RA-L)
 
 Warsaw University of Technology
 
+### Our other projects ###
+* MinkLoc3D: Point Cloud Based Large-Scale Place Recognition (WACV 2021): [MinkLoc3D](https://github.com/jac99/MinkLoc3D) 
+* MinkLoc++: Lidar and Monocular Image Fusion for Place Recognition (IJCNN 2021): [MinkLoc++](https://github.com/jac99/MinkLocMultimodal)
+* Large-Scale Topological Radar Localization Using Learned Descriptors (ICONIP 2021): [RadarLoc](https://github.com/jac99/RadarLoc)
+
 ### Introduction
 The paper presents a **deep neural network-based method for global and local descriptors extraction from a point
 cloud acquired by a rotating 3D LiDAR sensor**. The descriptors can be used for two-stage 6DoF relocalization. First, a course
@@ -15,11 +20,6 @@ position is retrieved by finding candidates with the closest global descriptor i
 robust estimator such as RANSAC. Our method has a simple, fully convolutional architecture and uses a sparse voxelized
 representation of the input point cloud. It can **efficiently extract a global descriptor and a set of keypoints with 
 their local descriptors from large point clouds with tens of thousand points**.
-
-### Our other projects ###
-* MinkLoc3D: Point Cloud Based Large-Scale Place Recognition (WACV 2021): [MinkLoc3D](https://github.com/jac99/MinkLoc3D) 
-* MinkLoc++: Lidar and Monocular Image Fusion for Place Recognition (IJCNN 2021): [MinkLoc++](https://github.com/jac99/MinkLocMultimodal)
-* Large-Scale Topological Radar Localization Using Learned Descriptors (ICONIP 2021): [RadarLoc](https://github.com/jac99/RadarLoc)
 
 ## Site is under construction. Training/evaluation code and pre-trained models will be released after the paper acceptance.
 
