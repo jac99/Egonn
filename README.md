@@ -137,8 +137,8 @@ python evaluate.py --dataset_root <dataset_root_path> --dataset_type kitti --eva
 ## Visualizations
 
 Visualizations of our keypoint detector results. 
-On the left we show 128 keypoints with the lowest saliency uncertainty (red dots), 
-whereas on the right 128 with the highest (yellow dots).
+On the left, we show 128 keypoints with the lowest saliency uncertainty (red dots). 
+On the right, 128 keypoints with the highest uncertainty (yellow dots).
 
 ![](images/keypoints_vis.png)
 
