@@ -1,7 +1,7 @@
 # EgonNN: Egocentric Neural Network for Point Cloud Based 6DoF Relocalization at the City Scale
 
-Paper: [EgoNN: Egocentric Neural Network for Point Cloud Based 6DoF Relocalization at the City Scale](http://arxiv.org/xxxxxxx) 
-submitted to IEEE Robotics and Automation Letters (RA-L)
+Paper: [EgoNN: Egocentric Neural Network for Point Cloud Based 6DoF Relocalization at the City Scale](https://arxiv.org/pdf/2110.12486.pdf) 
+submitted to IEEE Robotics and Automation Letters (RA-L) ([ArXiv](https://arxiv.org/pdf/2110.12486.pdf))
 
 [Jacek Komorowski](mailto:jacek.komorowski@pw.edu.pl), Monika Wysoczanska, Tomasz Trzcinski
 
