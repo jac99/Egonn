@@ -30,6 +30,12 @@ their local descriptors from large point clouds with tens of thousand points**.
 ### Citation
 If you find this work useful, please consider citing:
 
+    @article{komorowski2021egonn,
+      title={EgoNN: Egocentric Neural Network for Point Cloud Based 6DoF Relocalization at the City Scale},
+      author={Komorowski, Jacek and Wysoczanska, Monika and Trzcinski, Tomasz},
+      journal={arXiv preprint arXiv:2110.12486},
+      year={2021}
+    }
 
 ### Environment and Dependencies
 Code was tested using Python 3.8 with PyTorch 1.9.1 and MinkowskiEngine 0.5.4 on Ubuntu 20.04 with CUDA 10.2.
