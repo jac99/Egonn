@@ -173,7 +173,6 @@ class BatchHardTripletLossWithMasks:
 
 class BatchHardContrastiveLossWithMasks:
     def __init__(self, pos_margin, neg_margin):
-        c_f.COLLECT_STATS = True
         self.pos_margin = pos_margin
         self.neg_margin = neg_margin
         self.distance = LpDistance(normalize_embeddings=False, collect_stats=True)
