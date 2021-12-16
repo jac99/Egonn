@@ -95,8 +95,8 @@ def do_train(params: TrainingParams, debug=False, visualize=False, device='cpu')
 
     radius = [5, 20]
     n_k = [128, 256]
-    repeat_dist_th = [0.5]
-    evaluator_test_set = MinkLocGLEvaluator(params.dataset_folder, 'mulran', 'test_Sejong01_Sejong02.pickle',
+    repeat_dist_th = 0.5
+    evaluator_test_set = MinkLocGLEvaluator(params.dataset_folder, 'mulran', params.test_file,
                                             device=device, radius=radius, k=20, n_samples=100,
                                             repeat_dist_th=repeat_dist_th, n_k=n_k,
                                             quantizer=params.model_params.quantizer, icp_refine=True)
@@ -138,7 +138,7 @@ def do_train(params: TrainingParams, debug=False, visualize=False, device='cpu')
                 local_phase = 'local_val'
 
             # !!! Below loop will skip some batches in the dataset having larger number of batches
-            for (batch, positives_mask, negatives_mask, _, _), local_batch in zip(dataloaders[global_phase], dataloaders[local_phase]):
+            for (batch, positives_mask, negatives_mask), local_batch in zip(dataloaders[global_phase], dataloaders[local_phase]):
                 # batch is (batch_size, n_points, 3) tensor
                 # labels is list with indexes of elements forming a batch
                 count_batches += 1
@@ -288,7 +288,7 @@ def do_train(params: TrainingParams, debug=False, visualize=False, device='cpu')
     torch.save(model.state_dict(), final_model_path)
 
     # Evaluate the final model using all samples
-    evaluator_test_set = MinkLocGLEvaluator(params.dataset_folder, 'mulran', 'test_Sejong01_Sejong02.pickle',
+    evaluator_test_set = MinkLocGLEvaluator(params.dataset_folder, 'mulran', params.test_file,
                                             device=device, radius=radius, k=20, repeat_dist_th=repeat_dist_th,
                                             n_k=n_k, quantizer=params.model_params.quantizer, icp_refine=True)
     mulran_sejong_global_stats, mulran_sejong_stats = evaluator_test_set.evaluate(model)
