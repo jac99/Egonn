@@ -1,7 +1,7 @@
 # EgonNN: Egocentric Neural Network for Point Cloud Based 6DoF Relocalization at the City Scale
 
-Paper: [EgoNN: Egocentric Neural Network for Point Cloud Based 6DoF Relocalization at the City Scale](https://arxiv.org/pdf/2110.12486.pdf) 
-submitted to IEEE Robotics and Automation Letters (RA-L) ([ArXiv](https://arxiv.org/pdf/2110.12486.pdf))
+Paper: [EgoNN: Egocentric Neural Network for Point Cloud Based 6DoF Relocalization at the City Scale](https://link.springer.com/chapter/10.1007/978-3-030-92270-2_39) 
+IEEE Robotics and Automation Letters (RA-L) Volume 7 Issue 2 April 2022
 
 [Jacek Komorowski](mailto:jacek.komorowski@pw.edu.pl), Monika Wysoczanska, Tomasz Trzcinski
 
@@ -30,12 +30,15 @@ their local descriptors from large point clouds with tens of thousand points**.
 ### Citation
 If you find this work useful, please consider citing:
 
-    @article{komorowski2021egonn,
-      title={EgoNN: Egocentric Neural Network for Point Cloud Based 6DoF Relocalization at the City Scale},
-      author={Komorowski, Jacek and Wysoczanska, Monika and Trzcinski, Tomasz},
-      journal={arXiv preprint arXiv:2110.12486},
-      year={2021}
-    }
+    @ARTICLE{9645340,
+    author={Komorowski, Jacek and Wysoczanska, Monika and Trzcinski, Tomasz},
+    journal={IEEE Robotics and Automation Letters}, 
+    title={EgoNN: Egocentric Neural Network for Point Cloud Based 6DoF Relocalization at the City Scale}, 
+    year={2022},
+    volume={7},
+    number={2},
+    pages={722-729},
+    doi={10.1109/LRA.2021.3133593}}
 
 ### Environment and Dependencies
 Code was tested using Python 3.8 with PyTorch 1.9.1 and MinkowskiEngine 0.5.4 on Ubuntu 20.04 with CUDA 10.2.
