@@ -3,7 +3,7 @@
 import argparse
 import torch
 
-from training.trainer_gl import do_train
+from training.trainer import do_train
 from misc.utils import TrainingParams
 
 

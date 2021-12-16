@@ -99,7 +99,7 @@ cd ../kitti
 python generate_evaluation_sets.py --dataset_root <kitti_dataset_root_path>
 ```
 
-### Training (training code will be released after the paper acceptance)
+### Training
 
 First, download datasets and generate training and evaluation pickles as described above.
 Edit the configuration file *config_egonn.txt*. 
