@@ -8,6 +8,8 @@ from misc.utils import TrainingParams
 from misc.poses import apply_transform
 from models.loss_utils import *
 
+from pprint import pprint
+
 
 def make_losses(params: TrainingParams):
     if params.loss == 'BatchHardTripletMarginLoss':
@@ -157,6 +159,9 @@ class BatchHardTripletLossWithMasks:
         hard_triplets = self.miner_fn(embeddings, positives_mask, negatives_mask)
         dummy_labels = torch.arange(embeddings.shape[0]).to(embeddings.device)
         loss = self.loss_fn(embeddings, dummy_labels, hard_triplets)
+        pprint(dir(self.loss_fn))
+        pprint(dir(self.loss_fn.reducer))
+
         stats = {'loss': loss.item(), 'avg_embedding_norm': self.loss_fn.distance.final_avg_query_norm,
                  'num_non_zero_triplets': self.loss_fn.reducer.triplets_past_filter,
                  'num_triplets': len(hard_triplets[0]),
