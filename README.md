@@ -49,6 +49,7 @@ The following Python packages are required:
 * MinkowskiEngine (version 0.5.4 or above)
 * pytorch_metric_learning (version 1.0.0 or above)
 * Open3D (version 0.14 or above)
+* python-lzf (version 0.2.4 or above)
 * wandb
 
 Modify the `PYTHONPATH` environment variable to include absolute path to the project root folder: 
@@ -106,7 +107,7 @@ First, download datasets and generate training and evaluation pickles as describ
 Edit the configuration file *config_egonn.txt*. 
 Set *dataset_folder* parameter to point to the dataset root folder.
 Modify *batch_size_limit* and *secondary_batch_size_limit* parameters depending on available GPU memory. 
-Default limits requires at least 11GB of GPU RAM.
+Default limits require at least 11GB of GPU RAM.
 
 To train the EgoNN model, run:
 

@@ -96,7 +96,7 @@ def do_train(params: TrainingParams, debug=False, visualize=False, device='cpu')
     radius = [5, 20]
     n_k = [128, 256]
     repeat_dist_th = [0.5]
-    evaluator_test_set = MinkLocGLEvaluator(params.dataset_folder, 'mulran', 'mulran_sejong_eval.pickle',
+    evaluator_test_set = MinkLocGLEvaluator(params.dataset_folder, 'mulran', 'test_Sejong01_Sejong02.pickle',
                                             device=device, radius=radius, k=20, n_samples=100,
                                             repeat_dist_th=repeat_dist_th, n_k=n_k,
                                             quantizer=params.model_params.quantizer, icp_refine=True)
@@ -288,7 +288,7 @@ def do_train(params: TrainingParams, debug=False, visualize=False, device='cpu')
     torch.save(model.state_dict(), final_model_path)
 
     # Evaluate the final model using all samples
-    evaluator_test_set = MinkLocGLEvaluator(params.dataset_folder, 'mulran', 'mulran_sejong_eval.pickle',
+    evaluator_test_set = MinkLocGLEvaluator(params.dataset_folder, 'mulran', 'test_Sejong01_Sejong02.pickle',
                                             device=device, radius=radius, k=20, repeat_dist_th=repeat_dist_th,
                                             n_k=n_k, quantizer=params.model_params.quantizer, icp_refine=True)
     mulran_sejong_global_stats, mulran_sejong_stats = evaluator_test_set.evaluate(model)
