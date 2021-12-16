@@ -44,7 +44,7 @@ def make_datasets(params: TrainingParams, local=False, validation=True):
 
 
 def local_batch_to_device(batch, device):
-    # Move the batch used to training the local descriptor to the proper device
+    # Move the batch used to train the local descriptor to the proper device
     # Move everything except for len_batch
     batch['anc_batch'] = {'coords': batch['anc_batch']['coords'].to(device),
                           'features': batch['anc_batch']['features'].to(device)}
