@@ -149,7 +149,8 @@ class BatchHardTripletLossWithMasks:
         self.distance = LpDistance(normalize_embeddings=False, collect_stats=True)
         # We use triplet loss with Euclidean distance
         self.miner_fn = HardTripletMinerWithMasks(distance=self.distance)
-        self.loss_fn = losses.TripletMarginLoss(margin=self.margin, swap=True, distance=self.distance)
+        self.loss_fn = losses.TripletMarginLoss(margin=self.margin, swap=True, distance=self.distance,
+                                                collect_stats=True)
 
     def __call__(self, embeddings, positives_mask, negatives_mask):
         hard_triplets = self.miner_fn(embeddings, positives_mask, negatives_mask)
@@ -177,7 +178,7 @@ class BatchHardContrastiveLossWithMasks:
         self.miner_fn = HardTripletMinerWithMasks(distance=self.distance)
         # We use contrastive loss with squared Euclidean distance
         self.loss_fn = losses.ContrastiveLoss(pos_margin=self.pos_margin, neg_margin=self.neg_margin,
-                                              distance=self.distance)
+                                              distance=self.distance, collect_stats=True)
 
     def __call__(self, embeddings, positives_mask, negatives_mask):
         hard_triplets = self.miner_fn(embeddings, positives_mask, negatives_mask)
