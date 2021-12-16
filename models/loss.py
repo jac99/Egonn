@@ -8,6 +8,9 @@ from misc.utils import TrainingParams
 from misc.poses import apply_transform
 from models.loss_utils import *
 
+from pytorch_metric_learning.utils import common_functions as c_f
+c_f.COLLECT_STATS = True
+
 
 def make_losses(params: TrainingParams):
     if params.loss == 'BatchHardTripletMarginLoss':
@@ -146,11 +149,10 @@ def get_min_per_row(mat, mask):
 class BatchHardTripletLossWithMasks:
     def __init__(self, margin):
         self.margin = margin
-        self.distance = LpDistance(normalize_embeddings=False, collect_stats=True)
+        self.distance = LpDistance(normalize_embeddings=False)
         # We use triplet loss with Euclidean distance
         self.miner_fn = HardTripletMinerWithMasks(distance=self.distance)
-        self.loss_fn = losses.TripletMarginLoss(margin=self.margin, swap=True, distance=self.distance,
-                                                collect_stats=True)
+        self.loss_fn = losses.TripletMarginLoss(margin=self.margin, swap=True, distance=self.distance)
 
     def __call__(self, embeddings, positives_mask, negatives_mask):
         hard_triplets = self.miner_fn(embeddings, positives_mask, negatives_mask)
@@ -174,11 +176,11 @@ class BatchHardContrastiveLossWithMasks:
     def __init__(self, pos_margin, neg_margin):
         self.pos_margin = pos_margin
         self.neg_margin = neg_margin
-        self.distance = LpDistance(normalize_embeddings=False, collect_stats=True)
+        self.distance = LpDistance(normalize_embeddings=False)
         self.miner_fn = HardTripletMinerWithMasks(distance=self.distance)
         # We use contrastive loss with squared Euclidean distance
         self.loss_fn = losses.ContrastiveLoss(pos_margin=self.pos_margin, neg_margin=self.neg_margin,
-                                              distance=self.distance, collect_stats=True)
+                                              distance=self.distance)
 
     def __call__(self, embeddings, positives_mask, negatives_mask):
         hard_triplets = self.miner_fn(embeddings, positives_mask, negatives_mask)
