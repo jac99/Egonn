@@ -41,13 +41,13 @@ If you find this work useful, please consider citing:
     doi={10.1109/LRA.2021.3133593}}
 
 ### Environment and Dependencies
-Code was tested using Python 3.8 with PyTorch 1.9.1 and MinkowskiEngine 0.5.4 on Ubuntu 20.04 with CUDA 10.2.
+Code was tested using Python 3.8 with PyTorch 1.10.1 and MinkowskiEngine 0.5.4 on Ubuntu 20.04 with CUDA 10.2.
 Note: CUDA 11.1 is not recommended as there are some issues with MinkowskiEngine 0.5.4 on CUDA 11.1. 
 
 The following Python packages are required:
-* PyTorch (version 1.9.1)
-* MinkowskiEngine (version 0.5.4)
-* pytorch_metric_learning (version 0.9.99 or above)
+* PyTorch (version 1.10.1 or above)
+* MinkowskiEngine (version 0.5.4 or above)
+* pytorch_metric_learning (version 1.0.0 or above)
 * wandb
 
 Modify the `PYTHONPATH` environment variable to include absolute path to the project root folder: 
