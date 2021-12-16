@@ -146,9 +146,9 @@ def get_min_per_row(mat, mask):
 class BatchHardTripletLossWithMasks:
     def __init__(self, margin):
         self.margin = margin
-        self.distance = LpDistance(normalize_embeddings=False)
+        self.distance = LpDistance(normalize_embeddings=False, collect_stats=True)
         # We use triplet loss with Euclidean distance
-        self.miner_fn = HardTripletMinerWithMasks(distance=self.distance, collect_stats=True)
+        self.miner_fn = HardTripletMinerWithMasks(distance=self.distance)
         self.loss_fn = losses.TripletMarginLoss(margin=self.margin, swap=True, distance=self.distance,
                                                 collect_stats=True)
 
