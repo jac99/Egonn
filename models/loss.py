@@ -8,8 +8,6 @@ from misc.utils import TrainingParams
 from misc.poses import apply_transform
 from models.loss_utils import *
 
-from pprint import pprint
-
 
 def make_losses(params: TrainingParams):
     if params.loss == 'BatchHardTripletMarginLoss':
@@ -151,7 +149,7 @@ class BatchHardTripletLossWithMasks:
         self.distance = LpDistance(normalize_embeddings=False, collect_stats=True)
         # We use triplet loss with Euclidean distance
         self.miner_fn = HardTripletMinerWithMasks(distance=self.distance)
-        reducer_fn = reducers.MeanReducer(collect_stats=True)
+        reducer_fn = reducers.AvgNonZeroReducer(collect_stats=True)
         self.loss_fn = losses.TripletMarginLoss(margin=self.margin, swap=True, distance=self.distance,
                                                 reducer=reducer_fn, collect_stats=True)
 
@@ -159,8 +157,6 @@ class BatchHardTripletLossWithMasks:
         hard_triplets = self.miner_fn(embeddings, positives_mask, negatives_mask)
         dummy_labels = torch.arange(embeddings.shape[0]).to(embeddings.device)
         loss = self.loss_fn(embeddings, dummy_labels, hard_triplets)
-        pprint(dir(self.loss_fn))
-        pprint(dir(self.loss_fn.reducer))
 
         stats = {'loss': loss.item(), 'avg_embedding_norm': self.loss_fn.distance.final_avg_query_norm,
                  'num_non_zero_triplets': self.loss_fn.reducer.triplets_past_filter,
@@ -183,7 +179,7 @@ class BatchHardContrastiveLossWithMasks:
         self.distance = LpDistance(normalize_embeddings=False, collect_stats=True)
         self.miner_fn = HardTripletMinerWithMasks(distance=self.distance)
         # We use contrastive loss with squared Euclidean distance
-        reducer_fn = reducers.MeanReducer(collect_stats=True)
+        reducer_fn = reducers.AvgNonZeroReducer(collect_stats=True)
         self.loss_fn = losses.ContrastiveLoss(pos_margin=self.pos_margin, neg_margin=self.neg_margin,
                                               distance=self.distance, reducer=reducer_fn, collect_stats=True)
 
