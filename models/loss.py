@@ -2,7 +2,7 @@
 
 import numpy as np
 import torch
-from pytorch_metric_learning import losses, miners
+from pytorch_metric_learning import losses, miners, reducers
 from pytorch_metric_learning.distances import LpDistance
 from misc.utils import TrainingParams
 from misc.poses import apply_transform
@@ -149,8 +149,9 @@ class BatchHardTripletLossWithMasks:
         self.distance = LpDistance(normalize_embeddings=False, collect_stats=True)
         # We use triplet loss with Euclidean distance
         self.miner_fn = HardTripletMinerWithMasks(distance=self.distance)
+        reducer_fn = reducers.MeanReducer(collect_stats=True)
         self.loss_fn = losses.TripletMarginLoss(margin=self.margin, swap=True, distance=self.distance,
-                                                collect_stats=True)
+                                                reducer=reducer_fn, collect_stats=True)
 
     def __call__(self, embeddings, positives_mask, negatives_mask):
         hard_triplets = self.miner_fn(embeddings, positives_mask, negatives_mask)
@@ -178,8 +179,9 @@ class BatchHardContrastiveLossWithMasks:
         self.distance = LpDistance(normalize_embeddings=False, collect_stats=True)
         self.miner_fn = HardTripletMinerWithMasks(distance=self.distance)
         # We use contrastive loss with squared Euclidean distance
+        reducer_fn = reducers.MeanReducer(collect_stats=True)
         self.loss_fn = losses.ContrastiveLoss(pos_margin=self.pos_margin, neg_margin=self.neg_margin,
-                                              distance=self.distance, collect_stats=True)
+                                              distance=self.distance, reducer=reducer_fn, collect_stats=True)
 
     def __call__(self, embeddings, positives_mask, negatives_mask):
         hard_triplets = self.miner_fn(embeddings, positives_mask, negatives_mask)
