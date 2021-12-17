@@ -261,10 +261,8 @@ def do_train(params: TrainingParams, debug=False, visualize=False, device='cpu')
 
             metrics['test']['recall'] = global_test_metrics['recall']
             # Report local metrics only for 128 keypoints
-            reported_stats = test_metrics[128]
-            for e in reported_stats:
-                if len(reported_stats[e]) > 0:
-                    metrics['test'][e] = np.mean(np.array(reported_stats[e]))
+            for e in test_metrics[128]:
+                metrics['test'][e] = test_metrics[128][e]
 
         wandb.log(metrics)
 
