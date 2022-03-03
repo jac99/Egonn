@@ -15,6 +15,7 @@ Warsaw University of Technology
 * MinkLoc3D: Point Cloud Based Large-Scale Place Recognition (WACV 2021): [MinkLoc3D](https://github.com/jac99/MinkLoc3D) 
 * MinkLoc++: Lidar and Monocular Image Fusion for Place Recognition (IJCNN 2021): [MinkLoc++](https://github.com/jac99/MinkLocMultimodal)
 * Large-Scale Topological Radar Localization Using Learned Descriptors (ICONIP 2021): [RadarLoc](https://github.com/jac99/RadarLoc)
+* Improving Point Cloud Based Place Recognition with Ranking-based Loss and Large Batch Training (2022): [MinkLoc3Dv2](https://github.com/jac99/MinkLoc3Dv2)
 
 ### Introduction
 The paper presents a **deep neural network-based method for global and local descriptors extraction from a point
